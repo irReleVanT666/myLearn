@@ -45,3 +45,18 @@ r_btn = RedButton("1234567")
 g_btn = GreenButton("122334")
 r_btn.push_button()
 g_btn.push_button()
+
+
+# Ограничиванием параметры
+class Account:
+    __slots__ = ('name', 'balance')
+
+    def __init__(self, name, balance):
+        self.name = name
+        self.balance = balance
+
+
+a = Account('Ivan', 335)
+a.x = 13
+print(a.name)
+print(a.x)
