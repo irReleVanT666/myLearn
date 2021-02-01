@@ -1,0 +1,47 @@
+from abc import ABCMeta, abstractmethod
+
+
+class ButtonController(metaclass=ABCMeta):
+    def __init__(self, settings):
+        self.__settings = settings
+        self.connected = False
+        self.__connect_to_monitor()
+
+    def __connect_to_monitor(self):
+
+        if len(self.__settings) > 5:
+            self.connected = True
+            print('Connect')
+            return True
+        else:
+            return False
+
+    @abstractmethod
+    def push_button(self):
+        pass
+
+
+class RedButton(ButtonController):
+    def push_button(self):
+        if self.connected:
+            print('Red button')
+        else:
+            print('Nothing was pressed')
+
+
+class GreenButton(ButtonController):
+    def push_button(self):
+        if self.connected:
+            print('Green button pressed')
+        else:
+            raise ValueError('Nopthing')
+
+
+class YellowButton(ButtonController):
+    pass
+
+
+r_btn = RedButton("1234567")
+g_btn = GreenButton("122334")
+r_btn.push_button()
+g_btn.push_button()
