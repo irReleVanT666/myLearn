@@ -1,0 +1,27 @@
+
+
+class Profile:
+    def __init__(self, name, card_number):
+        self.name = name
+        self._card_number = card_number
+
+    @property
+    def user_card(self):
+        return "{} {} {} {}".format(self._card_number[:4],
+                                     self._card_number[4:8],
+                                     self._card_number[8:12],
+                                     self._card_number[12:])
+
+    @user_card.setter
+    def user_card(self, value):
+        if not (12 < len(value) <= 36):
+            raise ValueError("Should have more than 12 digits and less than 36")
+        self._card_number = value
+
+
+user = Profile("Vasya","4111111111111111")
+
+
+user.user_card = "53338855"
+print(user.user_card)
+
